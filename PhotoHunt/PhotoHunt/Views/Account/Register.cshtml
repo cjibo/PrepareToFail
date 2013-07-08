@@ -1,34 +1,40 @@
-﻿@model PhotoHunt.Models.RegisterModel
+@model PhotoHunt.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
 
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
 </hgroup>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
-
-    <fieldset>
-        <legend>Registration Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
+    
+    <fieldset class="form-horizontal">
+        <legend>Create a new account.</legend>
+        <div class="control-group">
+            @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+            <div class="controls">
                 @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+            <div class="controls">
                 @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+            <div class="controls">
                 @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-        </ol>
-        <input type="submit" value="Register" />
+            </div>
+        </div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Register" class="btn" />
+        </div>
     </fieldset>
 }
 
